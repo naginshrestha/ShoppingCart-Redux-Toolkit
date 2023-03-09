@@ -1,14 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import {useDispatch, useSelector } from 'react-redux'
+import { clearCart } from '../features/carts/cartSlice';
 import {CartItems} from './CartItems'
+
 
 export const CartContainer = () => {
 
-    const {cartItems,amount,total} = useSelector((state)=> state.cart)
+  const dispatch =useDispatch();
 
-    if(amount < 1){
+ const {cartItems,amounts,totals} = useSelector((state)=> state.cart)
+ console.log("jj",totals);
+
+
+    if(amounts < 1){
         return (
-            <div className='text-align-center'>
+            <div className='d-flex mt-5 justify-content-center align-items-center flex-column'>
                 <h2>Your Carts</h2>
                 <h4>Your cart is currently empty!!!</h4>
             </div>
@@ -23,7 +29,7 @@ export const CartContainer = () => {
             </div>
          
 
-          <div className='bodyy'>
+          <div className='cartlist'>
           {
             cartItems.map((item)=>{
                 return(
@@ -37,11 +43,11 @@ export const CartContainer = () => {
           <div className='cartfooter ' >
             <footer>
                 <hr/>
-                <h4>Total <span>${total}</span></h4>
+                <h4>Total <span>${totals.toFixed(2)}</span></h4>
             </footer>
           </div>
-          <div className='d-grid mt-4  m-auto' >
-            <button className='text-align-center'>
+          <div className='d-grid mt-4 m-auto' >
+            <button className='clearcart' onClick={() => dispatch(clearCart())}>
                 Clear cart
             </button>
           </div>

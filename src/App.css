@@ -39,9 +39,7 @@ height: 25px;
 
 }
 
-
-
-.bodyy{
+.cartItems{
     display: grid;
     margin: auto;
     width: 70vw;
@@ -53,8 +51,12 @@ height: 25px;
     width: 40%;
     
 }
-.cac{
-    width: 100px;
-    display: grid;
-    margin: auto;
+
+.clearcart{
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+    width: 250px;
+
+
 }
